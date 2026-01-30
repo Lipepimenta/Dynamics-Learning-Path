@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
+    <Model>Aprendizado12Semanas</Model>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateCrossReferences>True</GenerateCrossReferences>
+    <RunAppCheckerRules>False</RunAppCheckerRules>
+    <LogAppcheckerDiagsAsErrors>False</LogAppcheckerDiagsAsErrors>
+    <DeployOnline>False</DeployOnline>
+    <ProjectGuid>{ece1320d-8b0b-4998-aa7a-0a2d5279ca64}</ProjectGuid>
+    <Name>Aprendizado12Semanas</Name>
+    <RootNamespace>Aprendizado12Semanas</RootNamespace>
+    <StartupObject>JobAtualizaVIP</StartupObject>
+    <StartupType>Class</StartupType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Configuration>Debug</Configuration>
+    <DBSyncInBuild>False</DBSyncInBuild>
+    <GenerateFormAdaptors>False</GenerateFormAdaptors>
+    <Company>USMF</Company>
+    <Partition>initial</Partition>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DataEntityExpandParentChildRelations>False</DataEntityExpandParentChildRelations>
+    <DataEntityUseLabelTextAsFieldName>False</DataEntityUseLabelTextAsFieldName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="AxClass\ABCCustTable_Extension">
+      <SubType>Content</SubType>
+      <Name>ABCCustTable_Extension</Name>
+      <Link>Classes\ABCCustTable_Extension</Link>
+    </Content>
+    <Content Include="AxClass\JobAtualizaVIP">
+      <SubType>Content</SubType>
+      <Name>JobAtualizaVIP</Name>
+      <Link>JobAtualizaVIP</Link>
+    </Content>
+    <Content Include="AxClass\TesteLog">
+      <SubType>Content</SubType>
+      <Name>TesteLog</Name>
+      <Link>TesteLog</Link>
+    </Content>
+    <Content Include="AxFormExtension\CustParameters.Aprendizado12Semanas">
+      <SubType>Content</SubType>
+      <Name>CustParameters.Aprendizado12Semanas</Name>
+      <Link>Forms\CustParameters.Aprendizado12Semanas</Link>
+    </Content>
+    <Content Include="AxLabelFile\EtiquetasMensagens_en-US">
+      <SubType>Content</SubType>
+      <Name>EtiquetasMensagens_en-US</Name>
+      <Link>Labels\EtiquetasMensagens_en-US</Link>
+    </Content>
+    <Content Include="AxLabelFile\EtiquetasMensagens_pt-BR">
+      <SubType>Content</SubType>
+      <Name>EtiquetasMensagens_pt-BR</Name>
+      <Link>Labels\EtiquetasMensagens_pt-BR</Link>
+    </Content>
+    <Content Include="AxTableExtension\CustParameters.Aprendizado12Semanas1">
+      <SubType>Content</SubType>
+      <Name>CustParameters.Aprendizado12Semanas1</Name>
+      <Link>Tables\CustParameters.Aprendizado12Semanas1</Link>
+    </Content>
+    <Content Include="EtiquetasMensagens.en-US.label.txt">
+      <SubType>Content</SubType>
+      <Name>EtiquetasMensagens.en-US.label.txt</Name>
+      <DependentUpon>AxLabelFile\EtiquetasMensagens_en-US</DependentUpon>
+    </Content>
+    <Content Include="EtiquetasMensagens.pt-BR.label.txt">
+      <SubType>Content</SubType>
+      <Name>EtiquetasMensagens.pt-BR.label.txt</Name>
+      <DependentUpon>AxLabelFile\EtiquetasMensagens_pt-BR</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms" />
+    <Folder Include="Classes" />
+    <Folder Include="Labels" />
+    <Folder Include="Tables" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
+</Project>
