@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ABCCustTable_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(tableStr(CustTable))]
+internal final class ABCCustTable_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>validateWrite</Name>
+				<Source><![CDATA[
+    public boolean validateWrite()
+    {
+        boolean ret;
+
+        // Aqui vai a linha obrigatória que chama a lógica original (o "pai")
+        ret = next validateWrite();
+        CustParameters custParameters = CustParameters::find();
+
+        if (ret) //Se a microsofot aprovou...
+        {   // Aqui uso a variável carregada e comparo com o check noyes = yes
+            if (this.CreditMax > custParameters::find().ABCCreditLimitThreshold && custParameters.ABCAtivarValidacaoVIP == NoYes::Yes) {
+                    ret = checkFailed(strFmt("@EtiquetasMensagens:ErroLimiteExcedido", custParameters::find().ABCCreditLimitThreshold));
+            }
+        }
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
