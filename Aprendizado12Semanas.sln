@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FC65038C-1B2F-41E1-A629-BED71D161FFF}") = "Aprendizado12Semanas (USR) [Aprendizado12Semanas]", "Aprendizado12Semanas\Aprendizado12Semanas.rnrproj", "{ECE1320D-8B0B-4998-AA7A-0A2D5279CA64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECE1320D-8B0B-4998-AA7A-0A2D5279CA64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE1320D-8B0B-4998-AA7A-0A2D5279CA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E88B787-F374-49B6-A083-9B4D20AE9DB9}
+	EndGlobalSection
+EndGlobal
