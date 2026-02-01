@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ABCCustTable_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(tableStr(CustTable))]
+internal final class ABCCustTable_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>validateWrite</Name>
+				<Source><![CDATA[
+    public boolean validateWrite()
+    {
+        boolean ret;
+        ret = next validateWrite();
+
+        // Carrega o parâmetro UMA vez
+        CustParameters custParameters = CustParameters::find();
+
+        if (ret) 
+        {   
+            // Usa a variável carregada
+            if (this.CreditMax > custParameters.ABCCreditLimitThreshold 
+                && custParameters.ABCAtivarValidacaoVIP == NoYes::Yes) 
+            {
+                // Usa a variável aqui também
+                ret = checkFailed(strFmt("@EtiquetasMensagens:ErroLimiteExcedido", custParameters.ABCCreditLimitThreshold));
+            }
+        }
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

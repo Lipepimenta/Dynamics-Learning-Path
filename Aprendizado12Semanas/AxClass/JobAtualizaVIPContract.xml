@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JobAtualizaVIPContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute] // Isso avisa o sistema: "Use essa classe para montar a tela"
+internal final class JobAtualizaVIPContract
+{
+    // Variáveis privadas para guardar os valores
+    private CustGroupId custGroupId;
+    private Amount      creditMax;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmCustGroupId</Name>
+				<Source><![CDATA[
+        // Método para o Grupo de Clientes
+    [
+        DataMemberAttribute, // Avisa que esse campo deve aparecer na tela
+        SysOperationLabelAttribute(literalStr("Grupo de Clientes")), // O nome na tela
+        SysOperationHelpTextAttribute(literalStr("Selecione o grupo para atualizar"))
+    ]
+    public CustGroupId parmCustGroupId(CustGroupId _custGroupId = custGroupId)
+    {
+        custGroupId = _custGroupId;
+        return custGroupId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmCreditMax</Name>
+				<Source><![CDATA[
+    [
+        DataMemberAttribute,
+        SysOperationLabelAttribute(literalStr("Novo Limite")),
+        SysOperationHelpTextAttribute(literalStr("Informe o novo valor máximo de crédito"))
+    ]
+    public Amount parmCreditMax(Amount _creditMax = creditMax)
+    {
+        creditMax = _creditMax;
+        return creditMax;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

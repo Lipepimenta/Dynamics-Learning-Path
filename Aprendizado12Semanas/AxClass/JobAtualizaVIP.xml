@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JobAtualizaVIP</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class JobAtualizaVIP
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        CustTable custTable; //Faz a chamada da tabela "balde vazio"
+
+        ttsbegin; //Inicia a transação
+
+        Info("Iniciado a atualização...");
+
+        //Loop inteligente selecione e bloqueie para edição apenas quem é do grupo VIP
+        while select forupdate custTable
+            where custTable.CustGroup == "VIP"
+        {
+            custTable.CreditMax = 20000;
+            if (custTable.validateWrite())
+            {
+                custTable.update(); //Salva alteração no BD
+
+                Info(strFmt("Cliente %1 atualizado com sucesso.", custTable.AccountNum));
+            }
+            else
+            {
+                warning(strFmt("Cliente %1 não passou na validação e foi ignorado.", custTable.AccountNum));
+            }
+        }
+        ttscommit; //Fim da transação
+        Info("Processo finalizado!");
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

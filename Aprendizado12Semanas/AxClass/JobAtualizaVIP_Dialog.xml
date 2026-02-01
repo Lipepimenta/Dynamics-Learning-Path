@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JobAtualizaVIP_Dialog</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class JobAtualizaVIP_Dialog
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        Dialog dialog = new Dialog("Atualização de Limite de Crédito");
+
+        DialogField fieldGrupo = dialog.addField(extendedTypeStr(CustGroupId));
+        DialogField fieldValor = dialog.addField(extendedTypeStr(Amount));
+
+        int contador = 0;
+        CustTable custTable;
+
+        if (dialog.run())
+        {
+            CustGroupId grupoEscolhido = fieldGrupo.value();
+            Amount valorEscolhido  = fieldValor.value();
+
+            ttsbegin;
+
+            while select forupdate custTable
+                where custTable.CustGroup == grupoEscolhido
+            {
+                custTable.CreditMax = valorEscolhido;
+                if(custTable.validateWrite())
+                {
+                    custTable.update();
+                    contador++;
+                }
+                else
+                {
+                    warning(strFmt("Grupo %1 não pode ser atualizado pois o limite de crédito é superior ao permitido", grupoEscolhido));
+                }
+            }
+            ttscommit;
+            Info(strFmt("Sucesso! Atualizado o grupo '%1' para o valor %2, foram atualizado %3 registros", grupoEscolhido, valorEscolhido, contador));   
+        }
+        else
+        {
+            warning("Operação cancelada pelo usuário.");
+        }    
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
