@@ -48,7 +48,7 @@ Este repositório documenta minha evolução no desenvolvimento para Microsoft D
 <details>
   <summary><strong>Log de Execução (Bloqueio de Regra de Negócio) - Clique para expandir</strong> 🔽</summary>
   <br>
-  ![Log Job VIP](Images/LINK_DA_SUA_IMAGEM_AQUI)
+  <img width="929" height="275" alt="blockingMessage" src="https://github.com/user-attachments/assets/e454c2f6-9f33-47a8-83c0-60f604b54b4e" />
 </details>
 
 ---
