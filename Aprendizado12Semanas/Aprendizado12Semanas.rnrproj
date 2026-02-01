@@ -15,8 +15,10 @@
     <ProjectGuid>{ece1320d-8b0b-4998-aa7a-0a2d5279ca64}</ProjectGuid>
     <Name>Aprendizado12Semanas</Name>
     <RootNamespace>Aprendizado12Semanas</RootNamespace>
-    <StartupObject>JobAtualizaVIP</StartupObject>
-    <StartupType>Class</StartupType>
+    <StartupObject>
+    </StartupObject>
+    <StartupType>
+    </StartupType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <Configuration>Debug</Configuration>
@@ -41,12 +43,32 @@
     <Content Include="AxClass\JobAtualizaVIP">
       <SubType>Content</SubType>
       <Name>JobAtualizaVIP</Name>
-      <Link>JobAtualizaVIP</Link>
+      <Link>Classes\JobAtualizaVIP</Link>
+    </Content>
+    <Content Include="AxClass\JobAtualizaVIPContract">
+      <SubType>Content</SubType>
+      <Name>JobAtualizaVIPContract</Name>
+      <Link>Classes\JobAtualizaVIPContract</Link>
+    </Content>
+    <Content Include="AxClass\JobAtualizaVIPController">
+      <SubType>Content</SubType>
+      <Name>JobAtualizaVIPController</Name>
+      <Link>Classes\JobAtualizaVIPController</Link>
+    </Content>
+    <Content Include="AxClass\JobAtualizaVIPService">
+      <SubType>Content</SubType>
+      <Name>JobAtualizaVIPService</Name>
+      <Link>Classes\JobAtualizaVIPService</Link>
+    </Content>
+    <Content Include="AxClass\JobAtualizaVIP_Dialog">
+      <SubType>Content</SubType>
+      <Name>JobAtualizaVIP_Dialog</Name>
+      <Link>Classes\JobAtualizaVIP_Dialog</Link>
     </Content>
     <Content Include="AxClass\TesteLog">
       <SubType>Content</SubType>
       <Name>TesteLog</Name>
-      <Link>TesteLog</Link>
+      <Link>Classes\TesteLog</Link>
     </Content>
     <Content Include="AxFormExtension\CustParameters.Aprendizado12Semanas">
       <SubType>Content</SubType>
@@ -62,6 +84,16 @@
       <SubType>Content</SubType>
       <Name>EtiquetasMensagens_pt-BR</Name>
       <Link>Labels\EtiquetasMensagens_pt-BR</Link>
+    </Content>
+    <Content Include="AxMenuExtension\AccountsReceivable.Aprendizado12Semanas">
+      <SubType>Content</SubType>
+      <Name>AccountsReceivable.Aprendizado12Semanas</Name>
+      <Link>Menu Extensions\AccountsReceivable.Aprendizado12Semanas</Link>
+    </Content>
+    <Content Include="AxMenuItemAction\JobAtualizaVIPMenuItem">
+      <SubType>Content</SubType>
+      <Name>JobAtualizaVIPMenuItem</Name>
+      <Link>Menu Items\JobAtualizaVIPMenuItem</Link>
     </Content>
     <Content Include="AxTableExtension\CustParameters.Aprendizado12Semanas1">
       <SubType>Content</SubType>
@@ -83,6 +115,8 @@
     <Folder Include="Forms" />
     <Folder Include="Classes" />
     <Folder Include="Labels" />
+    <Folder Include="Menu Items" />
+    <Folder Include="Menu Extensions" />
     <Folder Include="Tables" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />

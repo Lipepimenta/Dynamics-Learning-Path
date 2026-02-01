@@ -31,6 +31,25 @@ Este repositório documenta minha evolução no desenvolvimento para Microsoft D
   <img width="1916" height="646" alt="customers" src="https://github.com/user-attachments/assets/9f9ddd58-e740-4069-8267-3bcc6eb2f222" />
 </details>
 
+## 📅 Semana 2: Manipulação de Dados e "Batch Jobs"
+**Foco:** Criação de rotinas de atualização em massa via X++ (Runnable Class).
+
+### ✨ O que foi feito
+1.  **Job de Atualização em Massa:**
+    * Desenvolvimento de `Runnable Class` para varrer a tabela de Clientes.
+    * Uso de `while select forUpdate` para filtrar apenas o grupo 'VIP'.
+    * Uso de Transações (`ttsbegin` / `ttscommit`) para segurança dos dados.
+2.  **Integração com Validações:**
+    * Ajuste no Job para respeitar a lógica de negócios criada na Semana 1.
+    * Uso explícito de `.validateWrite()` para garantir que regras de limite de crédito sejam checadas antes do `.update()`.
+
+### 📸 Prints das Funcionalidades
+
+<details>
+  <summary><strong>Log de Execução (Bloqueio de Regra de Negócio) - Clique para expandir</strong> 🔽</summary>
+  <br>
+  ![Log Job VIP](Images/LINK_DA_SUA_IMAGEM_AQUI)
+</details>
 
 ---
 *Em desenvolvimento.*
