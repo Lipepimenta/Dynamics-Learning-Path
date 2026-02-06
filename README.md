@@ -51,5 +51,42 @@ Este repositório documenta minha evolução no desenvolvimento para Microsoft D
   <img width="929" height="275" alt="blockingMessage" src="https://github.com/user-attachments/assets/e454c2f6-9f33-47a8-83c0-60f604b54b4e" />
 </details>
 
+## 📅 Semana 3: Framework SysOperation (Padrão MVC)
+
+**Foco:** Evolução de Jobs manuais para o framework robusto de operações em lote (SysOperation Framework) e integração ao menu do sistema.
+
+### ✨ O que foi feito
+
+* **Arquitetura MVC (Model-View-Controller):**
+    * Refatoração da lógica para separar responsabilidades, abandonando o uso de *Runnable Classes* (Jobs) simples para processos complexos.
+* **Implementação dos Componentes:**
+    * **Contract (O Bagageiro):** Criação de classe `DataContract` para definir parâmetros de entrada (ex: datas, valores) e gerar automaticamente os campos da janela de diálogo.
+    * **Service (O Motor):** Centralização da lógica de negócios (atualização dos clientes VIP) em uma classe de serviço pura, desacoplada da interface.
+    * **Controller (O Piloto):** Configuração da classe controladora que orquestra a execução e define o modo de operação (Síncrono/Assíncrono).
+* **Integração e Acesso:**
+    * **Menu Item:** Criação de item de menu do tipo *Action* apontando para o Controller.
+    * **Módulo Contas a Receber:** Inserção da funcionalidade no menu principal do módulo através de uma *Menu Extension*.
+* **Interface de Usuário (Dialog):**
+    * Geração automática da interface de parâmetros para o usuário final baseada no *Contract*.
+    * Validação de dados direto na entrada do usuário.
+
+### 📸 Prints das Funcionalidades
+
+<details>
+  <summary><strong>1. Seleção da ação de menu (Atualiza Cliente VIP) - Clique para expandir</strong> 🔽</summary>
+  <br>
+  <img width="953" height="732" alt="menu-item" src="https://github.com/user-attachments/assets/c23c0081-e02d-4ad8-adef-f4bb3eefe825" />
+</details>
+<br>
+<details>
+  <summary><strong>2. Janela de Diálogo (SysOperation) - Clique para expandir</strong> 🔽</summary>
+  <br>
+  <img width="960" height="1038" alt="screen-job" src="https://github.com/user-attachments/assets/78653367-6d81-4dbb-98c5-b0d9f13957bd" />
+</details>
+
 ---
-*Em desenvolvimento.*
+
+### 🛠 Tecnologias Utilizadas
+* **Linguagem:** X++
+* **IDE:** Visual Studio (Finance & Operations Tools)
+* **Banco de Dados:** SQL Server (AxDB)
