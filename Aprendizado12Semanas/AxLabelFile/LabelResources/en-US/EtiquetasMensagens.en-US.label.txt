@@ -1,0 +1,2 @@
+﻿ErroLimiteExcedido=O limite de crédito não pode exceder %1
+ErroLimiteZero=The limit cannot be zero or less

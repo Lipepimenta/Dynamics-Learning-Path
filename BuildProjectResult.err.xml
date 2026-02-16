@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Diagnostics
+  GenerationTime="2026-02-11T07:28:43.4926455-03:00">
+  <Items>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/JobAtualizaVIPService/Method/processar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ExpectedToken</Moniker>
+      <Line>28</Line>
+      <Column>31</Column>
+      <EndLine>28</EndLine>
+      <EndColumn>32</EndColumn>
+      <Message>';' expected.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/JobAtualizaVIPService/Method/processar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>IllegalToken</Moniker>
+      <Line>30</Line>
+      <Column>24</Column>
+      <EndLine>30</EndLine>
+      <EndColumn>34</EndColumn>
+      <Message>Invalid token 'custVIPLog'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/JobAtualizaVIPService/Method/processar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InvalidTypeNameAsQualifier</Moniker>
+      <Line>32</Line>
+      <Column>13</Column>
+      <EndLine>32</EndLine>
+      <EndColumn>24</EndColumn>
+      <Message>The qualifier 'custVIPLog' is not valid in this context. Use a variable of this type instead. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/JobAtualizaVIPService/Method/processar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>NotDeclared</Moniker>
+      <Line>32</Line>
+      <Column>37</Column>
+      <EndLine>32</EndLine>
+      <EndColumn>48</EndColumn>
+      <Message>'_AccountNum' is not declared.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/JobAtualizaVIPService/Method/processar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InvalidTypeNameAsQualifier</Moniker>
+      <Line>33</Line>
+      <Column>13</Column>
+      <EndLine>33</EndLine>
+      <EndColumn>24</EndColumn>
+      <Message>The qualifier 'custVIPLog' is not valid in this context. Use a variable of this type instead. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/JobAtualizaVIPService/Method/processar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>NotDeclared</Moniker>
+      <Line>33</Line>
+      <Column>35</Column>
+      <EndLine>33</EndLine>
+      <EndColumn>44</EndColumn>
+      <Message>'_OldLimit' is not declared.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/JobAtualizaVIPService/Method/processar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InvalidTypeNameAsQualifier</Moniker>
+      <Line>34</Line>
+      <Column>13</Column>
+      <EndLine>34</EndLine>
+      <EndColumn>24</EndColumn>
+      <Message>The qualifier 'custVIPLog' is not valid in this context. Use a variable of this type instead. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/JobAtualizaVIPService/Method/processar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>NotDeclared</Moniker>
+      <Line>34</Line>
+      <Column>35</Column>
+      <EndLine>34</EndLine>
+      <EndColumn>44</EndColumn>
+      <Message>'_NewLimit' is not declared.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/JobAtualizaVIPService/Method/processar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InvalidTypeNameAsQualifier</Moniker>
+      <Line>36</Line>
+      <Column>13</Column>
+      <EndLine>36</EndLine>
+      <EndColumn>24</EndColumn>
+      <Message>The qualifier 'custVIPLog' is not valid in this context. Use a variable of this type instead. </Message>
+    </Diagnostic>
+  </Items>
+  <Aliases />
+</Diagnostics>

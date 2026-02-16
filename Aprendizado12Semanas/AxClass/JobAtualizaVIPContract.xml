@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JobAtualizaVIPContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class JobAtualizaVIPContract implements SysOperationValidatable
+{
+    // Variáveis privadas
+    private CustGroupId custGroupId;
+    private Amount      creditMax;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmCustGroupId</Name>
+				<Source><![CDATA[
+    // Método 1: Grupo de Clientes (Com atributos)
+    [
+        DataMemberAttribute,
+        SysOperationLabelAttribute(literalStr("Grupo de Clientes")),
+        SysOperationHelpTextAttribute(literalStr("Selecione o grupo para atualizar"))
+    ]
+    public CustGroupId parmCustGroupId(CustGroupId _custGroupId = custGroupId)
+    {
+        custGroupId = _custGroupId;
+        return custGroupId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validate</Name>
+				<Source><![CDATA[
+    // Método 2: Validação (SEM atributos de tela)
+    public boolean validate()
+    {
+        boolean ret = true;
+        if (creditMax <= 0)
+        {
+            ret = false;
+            checkFailed(strFmt("@EtiquetasMensagens:ErroLimiteZero"));
+        }
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmCreditMax</Name>
+				<Source><![CDATA[
+    // Método 3: Novo Limite (Os atributos vêm para cá!)
+    [
+        DataMemberAttribute,
+        SysOperationLabelAttribute(literalStr("Novo Limite")),
+        SysOperationHelpTextAttribute(literalStr("Informe o novo valor máximo de crédito"))
+    ]
+    public Amount parmCreditMax(Amount _creditMax = creditMax)
+    {
+        creditMax = _creditMax;
+        return creditMax;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

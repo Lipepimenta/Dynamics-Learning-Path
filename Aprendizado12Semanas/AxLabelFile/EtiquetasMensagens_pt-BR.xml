@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxLabelFile xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>EtiquetasMensagens_pt-BR</Name>
+	<LabelContentFileName>EtiquetasMensagens.pt-BR.label.txt</LabelContentFileName>
+	<LabelFileId>EtiquetasMensagens</LabelFileId>
+	<Language>pt-BR</Language>
+	<RelativeUriInModelStore>Aprendizado12Semanas\Aprendizado12Semanas\AxLabelFile\LabelResources\pt-BR\EtiquetasMensagens.pt-BR.label.txt</RelativeUriInModelStore>
+</AxLabelFile>

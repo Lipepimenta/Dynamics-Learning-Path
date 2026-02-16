@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<z:anyType xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns=""
+	i:type="AxCompilerMetadata" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/">
+	<IsFinal>true</IsFinal>
+	<IsInternal>true</IsInternal>
+	<Methods>
+		<Method>
+			<Name>main</Name>
+			<IsStatic>true</IsStatic>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Type>Class</Type>
+					<TypeName>Args</TypeName>
+					<Name>_args</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<TypeName></TypeName>
+			</ReturnType>
+			<Variables>
+				<AxMethodVariable>
+					<Type>Class</Type>
+					<TypeName>Dialog</TypeName>
+					<Name>dialog</Name>
+				</AxMethodVariable>
+				<AxMethodVariable>
+					<Type>Class</Type>
+					<TypeName>DialogField</TypeName>
+					<Name>fieldGrupo</Name>
+				</AxMethodVariable>
+				<AxMethodVariable>
+					<Type>Class</Type>
+					<TypeName>DialogField</TypeName>
+					<Name>fieldValor</Name>
+				</AxMethodVariable>
+				<AxMethodVariable>
+					<Type>Int32</Type>
+					<TypeName></TypeName>
+					<Name>contador</Name>
+				</AxMethodVariable>
+				<AxMethodVariable>
+					<Type>Record</Type>
+					<TypeName>CustTable</TypeName>
+					<Name>custTable</Name>
+				</AxMethodVariable>
+			</Variables>
+		</Method>
+	</Methods>
+</z:anyType>

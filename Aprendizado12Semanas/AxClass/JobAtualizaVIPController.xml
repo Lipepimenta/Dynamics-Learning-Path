@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JobAtualizaVIPController</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class JobAtualizaVIPController extends SysOperationServiceController
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    // O ponto de entrada (o botão de Play)
+    public static void main(Args _args)
+    {
+        JobAtualizaVIPController controller;
+
+        // Aqui fazemos a mágica: Dizemos quem é o MOTOR (Classe) e quem é a ENGRENAGEM (Método)
+        controller = new JobAtualizaVIPController(
+            classStr(JobAtualizaVIPService),
+            methodStr(JobAtualizaVIPService, processar),
+            SysOperationExecutionMode::ScheduledBatch);
+
+        // Inicia o processo (desenha a tela e aguarda o OK)
+        controller.startOperation();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    // Construtor: Configurações visuais (Título da janela)
+    protected void new(
+        IdentifierName _className = '',
+        IdentifierName _methodName = '',
+        SysOperationExecutionMode _executionMode = SysOperationExecutionMode::ScheduledBatch)
+    {
+        super(_className, _methodName, _executionMode);
+        
+        // Define o título bonito que vai aparecer na janelinha
+        this.parmDialogCaption("Atualização de Clientes VIP (SysOperation)");
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
