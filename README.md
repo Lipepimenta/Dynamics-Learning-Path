@@ -319,6 +319,10 @@ Foram criados Security Privileges cobrindo todos os Menu Items do módulo:
 
 ---
 
+📦 Código fonte: [ATLCourseManagement](https://github.com/FilipeAteliware/ATLCourseManagement)
+
+---
+
 ## 📅 Linha do Tempo Atualizada
 
 | Semana | Foco | Conceitos Dynamics Aplicados | Resultado Prático |
