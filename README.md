@@ -180,16 +180,154 @@ A solução passou a oferecer:
 
 </details>
 
+# 🔹 Semana 5 — Gestão de Cursos Inteligente
+
+## O que eu queria resolver
+
+Sair do escopo de extensão de tabelas nativas e construir um módulo completo do zero.
+
+O desafio foi criar um sistema real de gestão de cursos corporativos dentro do Dynamics 365 F&O,  
+cobrindo o ciclo completo: cadastro, configuração, participantes, inativação automática e controle de acesso.
+
+Mais do que fazer funcionar, o objetivo foi aprender os padrões certos de arquitetura e navegação do D365.
+
 ---
 
-# 📅 Linha do Tempo do Aprendizado
+## Arquitetura do Módulo
+
+```
+ATLCourseTable           → Tabela mestre de cursos
+ATLCourseParticipant     → Tabela filha de participantes (relação 1:N)
+ATLCourseService         → Classe de serviço com lógica de negócio isolada
+ATLCourseExpirationBatch → Batch Job agendável para expiração automática
+```
+
+O módulo segue a separação de responsabilidades do framework:
+
+- **Tabelas** cuidam dos dados e validações
+- **Service** centraliza a lógica de negócio reutilizável
+- **Batch** orquestra o processamento agendado
+- **Forms** são apenas interface, sem lógica
+
+---
+
+## Evolução Técnica
+
+### Modelo de Dados
+
+Foram criadas duas tabelas com relação 1:N:
+
+- `ATLCourseTable` com os campos `CourseId`, `Name`, `IsEnabled`, `DateStart`, `DateEnd`, `Price`
+- `ATLCourseParticipant` com `CourseId` (FK), `CustAccount` (FK para CustTable), `IsActive`
+
+Ambas seguem os padrões de auditoria automática (`CreatedBy`, `CreatedDateTime`, `ModifiedBy`, `ModifiedDateTime`) e foram documentadas com Labels, Field Groups, TitleField e DeveloperDocumentation.
+
+### Navegação (Forms)
+
+O módulo expõe três telas com navegação encadeada:
+
+| Form | Padrão | Propósito |
+|---|---|---|
+| `ATLCourseTable` | Simple List | Listagem e cadastro rápido de cursos |
+| `ATLCourseDetails` | Details Master | Configuração completa do curso selecionado |
+| `ATLCourseParticipantForm` | Simple List | Gestão de participantes filtrada por curso |
+
+A navegação entre `ATLCourseTable` → `ATLCourseDetails` é feita via Menu Item Button com passagem de registro via `Args`, garantindo que o form de detalhes sempre abra o curso correto.
+
+A filtragem de participantes por curso é feita via `addRange` no `init` do form, usando o registro recebido por `Args`.
+
+### Lógica de Negócio (X++)
+
+**`modifiedField` na `ATLCourseTable`:**  
+Ao alterar `IsEnabled` para `No`, executa `update_recordset` na `ATLCourseParticipant` inativando todos os participantes via `IsActive = NoYes::No`. O inverso reativa ao habilitar o curso.
+
+**`validateField` na `ATLCourseTable`:**  
+Exibe caixa de confirmação (`Box::yesNo`) antes de inativar um curso que possui participantes, prevenindo ações acidentais.
+
+**`validateWrite` na `ATLCourseTable`:**  
+Garante que `CourseId` não seja vazio e que `Name` tenha no mínimo 3 caracteres.
+
+**`initValue` na `ATLCourseTable`:**  
+Inicializa `IsEnabled = Yes` para que novos cursos nasçam ativos.
+
+**`active` no Data Source do `ATLCourseDetails`:**  
+Bloqueia edição, criação e exclusão quando o curso está inativo, reavaliando o estado a cada navegação de registro.
+
+### ATLCourseService
+
+Classe de serviço com dois métodos estáticos:
+
+- `disableCourse(str _courseId)` — desabilita um curso e inativa seus participantes em uma transação única
+- `disableExpiredCourses()` — percorre todos os cursos ativos com `DateEnd` vencida e chama `disableCourse` para cada um
+
+Usar uma classe de serviço permite que a lógica de desativação seja reutilizada tanto pelo Batch quanto por outros pontos do sistema sem duplicação de código.
+
+### ATLCourseExpirationBatch
+
+Batch Job que estende `RunBaseBatch` e chama `ATLCourseService::disableExpiredCourses()`.
+
+Disponibilizado via Action Menu Item no módulo Accounts Receivable, pode ser executado manualmente ou agendado para rodar diariamente.
+
+### Segurança
+
+Foram criados Security Privileges cobrindo todos os Menu Items do módulo:
+
+- `ATLCourseTableMaintain` — acesso à tela de cursos
+- `ATLCourseExpirationBatchMaintain` — execução do batch
+
+---
+
+## Aprendizado
+
+- Criação de modelo completo do zero com tabelas, relações e Field Groups
+- Padrão de navegação entre forms via `Args` e `MenuFunction`
+- Filtragem de Data Source via `addRange` no `init` do form
+- Separação de responsabilidades: Table → Service → Batch
+- Uso de `update_recordset` para operações em massa sem loop
+- `Box::yesNo` para confirmação de ações destrutivas
+- Bloqueio de edição via `allowEdit/allowCreate/allowDelete` no Data Source
+- Batch Job com `RunBaseBatch` e `canRunInNewSession`
+- Labels, Field Groups, Security Privileges e Best Practice Check
+
+---
+<details>
+<summary>🖼️ Evidência Visual - Clique para expandir</summary>
+<br>
+<summary>Ações no modulo</summary>
+<img width="973" height="482" alt="image" src="https://github.com/user-attachments/assets/be4ad53d-273c-4cb8-8beb-7247e72e3116" />
+<br>
+<summary>Curso Cadastrado</summary>
+<img width="1915" height="493" alt="image" src="https://github.com/user-attachments/assets/45ca3898-6b0c-4698-be4a-093552709ad6" />
+<br>
+<summary>Cadastrado clientes ao curso</summary>
+<img width="1917" height="354" alt="image" src="https://github.com/user-attachments/assets/7ee978b7-8628-4132-a33d-b2810f090bbb" />
+<br>
+<summary>Executado BatchJob para inativar cursos vencidos</summary>
+<img width="1913" height="513" alt="image" src="https://github.com/user-attachments/assets/d0909dd1-3788-416d-9297-15c72975b7f5" />
+<br>
+<summary>Verificando logs de execução do Job</summary>
+<img width="1915" height="413" alt="image" src="https://github.com/user-attachments/assets/e56f4bf5-29e3-496f-9039-699750a28cae" />
+<br>
+<summary>Verificando curso desativado e campos bloqueados</summary>
+<img width="1908" height="486" alt="image" src="https://github.com/user-attachments/assets/8401e77c-4b2a-46c9-93ff-82ea61165eb9" />
+<br>
+<summary>Verificando alunos desativados</summary>
+<img width="1914" height="321" alt="image" src="https://github.com/user-attachments/assets/9e9d76e5-ed92-4c59-a3d3-2c863bdaa4ee" />
+<br>
+
+</details>
+
+---
+
+## 📅 Linha do Tempo Atualizada
 
 | Semana | Foco | Conceitos Dynamics Aplicados | Resultado Prático |
-|--------|------|-----------------------------|-------------------|
+|---|---|---|---|
 | 1 | Prova de Conceito | `validateWrite`, lógica de tabela, InfoLog | Validação de limite máximo hardcoded |
 | 2 | Internacionalização | Labels (AxLabel), validação negativa, padronização de mensagens | Código multilíngue e aderente às boas práticas |
 | 3 | Parametrização e Automação | Tabela de parâmetros, segmentação por `CustGroup`, Batch Framework, refatoração para MVC, Menu Item | Regra configurável via interface e processamento em massa estruturado |
 | 4 | Auditoria e Governança | Tabela de log customizada, formulário de consulta, Security Privileges, organização em `PackagesLocalDirectory` | Rastreabilidade completa e repositório profissional |
+| 5 | Módulo Completo do Zero | Modelo 1:N, navegação via Args, Service Layer, Batch Job, Best Practice Check | Sistema de gestão de cursos com inativação automática e controle de acesso |
 
 ---
 
